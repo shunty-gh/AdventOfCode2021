@@ -68,6 +68,8 @@ The `.ts`|`.js` file extensions are optional on the command line. Also, for the 
 
 The code for the current day can be debugged in VS Code by pressing F5 and picking the `TypeScript` option if prompted.
 
+#### Run specific day(s)
+
 To run the solution for a specific day or days (if they have been completed) you can add day numbers after the `(src|lib)/main` parameter. eg:
 
 ```
