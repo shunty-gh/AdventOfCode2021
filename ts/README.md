@@ -70,7 +70,7 @@ The code for the current day can be debugged in VS Code by pressing F5 and picki
 
 #### Run specific day(s)
 
-To run the solution for a specific day or days (if they have been completed) you can add day numbers after the `(src|lib)/main` parameter. eg:
+To run the solution for a specific day or days (if they have been completed) you can add space separated day numbers after the `(src|lib)/main` parameter. eg:
 
 ```
 $> esrun src/main 2 4 7
