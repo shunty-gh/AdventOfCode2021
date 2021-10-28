@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "description": "TypeScript solutions to the Advent of Code 2021",
   "main": "lib/main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shunty-gh/AdventOfCode2021"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=7.0.0"
+  },
   "scripts": {
     "clean": "tsc --build --clean",
     "build": "tsc --build",
