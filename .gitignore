@@ -1,0 +1,19 @@
+# TypeScript/Node stuff
+node_modules/
+*.tsbuildinfo
+ts/lib/
+
+*.exe
+*.pdb
+*.obj
+a.out
+
+.vs/
+.vscode/tags
+target/
+bin/
+**/debug
+obj/
+*.nuget.*
+
+*.private.*
