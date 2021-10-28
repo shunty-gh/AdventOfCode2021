@@ -14,7 +14,7 @@ Cross platform solutions written in [TypeScript](https://www.typescriptlang.org/
 
 #### Install / Set up
 
-Assuming Node/npm are alreay installed. From the repository root directory in a command prompt:
+Assuming Node/npm are alreay installed. From the repository root directory in a command/shell prompt:
 
 ```
 $> cd ts
