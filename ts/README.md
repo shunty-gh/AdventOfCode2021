@@ -9,8 +9,9 @@ Cross platform solutions written in [TypeScript](https://www.typescriptlang.org/
 #### Pre-requisites
 * [Node](https://nodejs.org/en/) - this was written using Node 14.xx and Node 16.xx. Probably most reasonably modern versions will work fine
 * npm - installed via Node - as above but written with v7.x & v8.x
+* (Optional) [nvm](https://github.com/nvm-sh/nvm) - makes it much easier to handle Node installations especially on Ubuntu 20.x where the 'apt' package version of Node is very old. Follow the instructions on the README page to install it.
 * [TypeScript](https://www.typescriptlang.org/) - can be installed [manually, globally](https://www.typescriptlang.org/download) or local to the project repository using the `npm` install command below
-* (Optional) [Visual Studio Code](https://code.visualstudio.com/) - the build and run/debug tasks work with VS Code
+* (Optional) [Visual Studio Code](https://code.visualstudio.com/) - the build and run/debug tasks work with VS Code. The launch configuration for Node/TypeScript/JavaScript debugging uses the `pwa-node` type. This is not the 'out-of-the-box' Node debugger but is the [nightly build version](https://github.com/microsoft/vscode-js-debug), currently named `JavaScript Debugger (Nightly)` in the VS Code extensions list. This isn't needed if you are simply running from the command line - only needed for debugging.
 
 #### Install / Set up
 
