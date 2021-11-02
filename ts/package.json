@@ -18,14 +18,17 @@
     "esrun": "esrun src"
   },
   "keywords": [
-    "aoc",
-    "aoc-2021"
+    "aoc", "aoc-2021",
+    "advent-of-code", "advent-of-code-2021"
   ],
   "author": "Steven Hunt",
   "license": "",
   "devDependencies": {
     "@digitak/esrun": "^1.2.8",
     "@types/node": "^16.11.6",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
+    "eslint": "^8.1.0",
     "tslib": "^2.3.1",
     "typescript": "^4.4.4"
   }
