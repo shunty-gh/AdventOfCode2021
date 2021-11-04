@@ -19,6 +19,7 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}/ts/lib/main.js",
+            "args": [ ], // Need to add required day numbers here if debugging anything other than the current day in December
             "cwd": "${workspaceFolder}/ts",
             "preLaunchTask": "tsc: build",
             "outFiles": [
