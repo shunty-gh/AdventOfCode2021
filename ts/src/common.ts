@@ -101,3 +101,27 @@ export function reverseString(src: string): string {
         .reverse()
         .join('');
 }
+
+export function countOccurs(toFind: string, src: string): number {
+    if (toFind && toFind.length === 1) {
+        return countCharOccurs(toFind, src);
+    }
+    let result = 0,
+        idx = src.indexOf(toFind);
+
+    while (idx >= 0) {
+        result++;
+        idx = src.indexOf(toFind, idx + 1);
+    }
+    return result;
+}
+
+export function countCharOccurs(ch: string, src: string): number {
+    if (!ch || ch.length !== 1 || !src) {
+        return -1;
+    }
+    let result = 0;
+    for (let i = 0; i < src.length; i++) { result += src[i] === ch ? 1 : 0; }
+    return result;
+}
+

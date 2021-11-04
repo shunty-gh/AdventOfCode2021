@@ -1,6 +1,6 @@
 import { DayRunner } from './day-runner';
 import { Day01 } from './day01';
-// import { Day02 } from './day02';
+import { Day02 } from './day02';
 // import { Day03 } from './day03';
 // import { Day04 } from './day04';
 // import { Day05 } from './day05';
@@ -31,8 +31,8 @@ export class DayFactory {
         switch (day) {
             case 1:
                 return new Day01();
-            // case 2:
-            //     return new Day02();
+            case 2:
+                return new Day02();
             // case 3:
             //     return new Day03();
             // case 4:
