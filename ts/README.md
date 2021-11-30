@@ -4,6 +4,20 @@
 
 Cross platform solutions written in [TypeScript](https://www.typescriptlang.org/) for the [Advent of Code 2021](https://adventofcode.com/2021) puzzles. The commands and instructions should apply equally to Windows and/or Linux and/or Windows Subsystem for Linux (WSL2). Maybe Mac, who knows.
 
+### TL;DR
+
+* Ensure node is installed.
+* Clone repository
+
+```
+$> cd <repository_root>/ts
+$> npm i
+$> npm start
+or, for a specific (completed) day:
+$> npm start 13
+
+```
+
 ### Get started
 
 #### Pre-requisites
