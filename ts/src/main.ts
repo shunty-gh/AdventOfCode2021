@@ -1,4 +1,7 @@
+import { fetchInput } from './common';
 import { DayFactory } from "./day-factory";
+
+const thisYear = 2021;
 
 function getDaysFromCommandLine(): number[] {
     const args = process.argv.slice(2);
@@ -23,9 +26,30 @@ function getDaysFromCommandLine(): number[] {
     return result;
 }
 
+/** Check command line args for 'f' or 'ff' parameters. If so
+  try and download input data for the supplied days. If 'f' is
+  specified then don't download if the file already exists. If
+  'ff' is specified then overwrite any existing file for the given
+  day. Return 'true' if we try and download data, false if no
+  'f' or 'ff' parameters supplied. */
+async function checkFetchInput(days: number[]): Promise<boolean> {
+    const args = process.argv.slice(2);
+    if (args.includes('f') || args.includes('ff')) {
+        const forceIt = args.includes('ff');
+        days.forEach(async d => {
+            await fetchInput(d, thisYear, forceIt);
+        });
+        return true;
+    }
+    return false;
+}
+
 //** Main runner */
 (async () => {
     const days = getDaysFromCommandLine();
+    if (await checkFetchInput(days)) {
+        return;
+    }
     const daystorun = DayFactory.Days(days);
     daystorun.forEach(async d => {
         await d.run();

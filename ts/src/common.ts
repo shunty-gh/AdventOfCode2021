@@ -1,4 +1,37 @@
-import { readFile } from 'fs/promises';
+import fs from 'fs';
+import { readFile, writeFile } from 'fs/promises';
+import { env } from 'process';
+import { fetch } from 'cross-fetch';
+
+export async function fetchInput(day: number, year: number = 2021, force: boolean = false) {
+    // This requires an AoC session cookie. Won't work without it. To get the cookie
+    // log in to AoC as normal, open the browser dev tools, find the session cookie,
+    // copy it then paste it as an environment variable named AOC_SESSION
+
+    const cookie = env.AOC_SESSION;
+    if (!cookie) {
+        throw new Error("AoC session cookie not found");
+    }
+    const fname = getInputFilename(day);
+    if (fs.existsSync(fname) && !force) {
+        console.warn(`Input file ${fname} already exists. To force an overwrite specify the force parameter 'ff'.`);
+        return;
+    }
+
+    const url = `https://adventofcode.com/${year}/day/${day}/input`;
+    //const cf = await import('cross-fetch');
+    //const res = await cf.fetch(url, { headers: { 'cookie': `session=${cookie}` }});
+    const res = await fetch(url, { headers: { 'cookie': `session=${cookie}` }});
+    if (res.status === 200) {
+        const content = await res.text();
+        await writeFile(fname, content);
+        console.info(`Downloaded input file ${fname}`);
+    } else if (res.status === 404) {
+        console.error(`Download of input ${fname} failed. Input data/file not found.`);
+    } else {
+        console.error(`Download of input ${fname} failed. `, res);
+    }
+}
 
 export interface Point2D {
     x: number;
