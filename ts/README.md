@@ -40,19 +40,12 @@ $> npm i
 
 The code to get the input for the respective day(s) is coded to look in the `<repository_root_folder>/input` directory which is expected to be at `../input` from the current working directory. Hence commands should generally be run from within the `ts` directory.
 
-*Optionally* install `esrun` globally if you want. The `npm i` command will install it locally for this project but you may need to add `./node_modules/.bin` to your path if you want to use it and haven't installed it globally.
-
-`esrun` will allow you to run the TypeScript code directly without having to compile to JavaScript first. I have, however, encountered issues when trying to use the globally installed version in **both** Windows Subsystem for Linux (WSL) and Windows together. Probably a PATH or npm/node version issue somewhere (especially as, originally, Windows was using Node v14 and npm v7 whereas WSL was using Node v16 and npm v8) and may have resolved itself by now:
-```
-$> npm i -g @digitak/esrun
-```
-
 ### Build and run
 
 To compile the TypeScript code (from the `ts` directory):
 
 ```
-$> tsc
+$> tsc --build
 ```
 or, in VS Code, use the Build command (Ctrl+Shift+B / Cmd+shift+B) and choose the `tsc: build` option if prompted.
 
@@ -63,23 +56,11 @@ To run the code for the current day (or day 1 if not within Dec 1-25):
 ```
 $> node lib/main.js
 ```
-or
-```
-$> esrun src/main.ts
-```
-or, if `esrun` is not global and/or not in path
-```
-$> node_modules/.bin/esrun src/main.ts
-```
-or
-```
-$> npm exec esrun src/main
-```
 or, using the npm scripts
 ```
 $> npm start
 ```
-The `.ts`|`.js` file extensions are optional on the command line. Also, for the `esrun` command we only need to supply the `./src` path and can leave out the `main` altogether.
+The `.ts`|`.js` file extensions are optional on the command line.
 
 The code for the current day can be debugged in VS Code by pressing F5 and picking the `TypeScript` option if prompted.
 
@@ -96,11 +77,6 @@ will download the input data for day 2 and overwrite it if it already exists.
 
 To run the solution for a specific day or days (if they have been completed) you can add space separated day numbers after the `(src|lib)/main` parameter. eg:
 
-```
-$> esrun src/main 2 4 7
-$> esrun src 13
-```
-or
 ```
 $> node lib/main 1 3
 ```
