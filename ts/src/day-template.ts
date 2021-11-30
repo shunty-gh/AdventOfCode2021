@@ -1,4 +1,4 @@
-import { DayBase } from './day-runner';
+import { DayBase } from './day-runner.js';
 
 export class DayXX extends DayBase {
     constructor() {

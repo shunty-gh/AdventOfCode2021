@@ -1,5 +1,5 @@
-import { DayBase } from './day-runner';
-import { countOccurs } from './common';
+import { DayBase } from './day-runner.js';
+import { countOccurs } from './common.js';
 
 export class Day02 extends DayBase {
     constructor() {

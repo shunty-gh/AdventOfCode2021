@@ -1,4 +1,4 @@
-import { getInputLines, getInputInts, getInputFloats } from './common';
+import { getInputLines, getInputInts, getInputFloats } from './common.js';
 
 export interface DayRunner {
     run: () => Promise<void>;

@@ -1,30 +1,29 @@
-import { DayRunner } from './day-runner';
-import { Day01 } from './day01';
-import { Day02 } from './day02';
-// import { Day03 } from './day03';
-// import { Day04 } from './day04';
-// import { Day05 } from './day05';
-// import { Day06 } from './day06';
-// import { Day07 } from './day07';
-// import { Day08 } from './day08';
-// import { Day09 } from './day09';
-// import { Day10 } from './day10';
-// import { Day11 } from './day11';
-// import { Day12 } from './day12';
-// import { Day13 } from './day13';
-// import { Day14 } from './day14';
-// import { Day15 } from './day15';
-// import { Day16 } from './day16';
-// import { Day17 } from './day17';
-// import { Day18 } from './day18';
-// import { Day19 } from './day19';
-// import { Day20 } from './day20';
-// import { Day21 } from './day21';
-// import { Day22 } from './day22';
-// import { Day23 } from './day23';
-// import { Day24 } from './day24';
-// import { Day25 } from './day25';
-
+import { DayRunner } from './day-runner.js';
+import { Day01 } from './day01.js';
+import { Day02 } from './day02.js';
+// import { Day03 } from './day03.js';
+// import { Day04 } from './day04.js';
+// import { Day05 } from './day05.js';
+// import { Day06 } from './day06.js';
+// import { Day07 } from './day07.js';
+// import { Day08 } from './day08.js';
+// import { Day09 } from './day09.js';
+// import { Day10 } from './day10.js';
+// import { Day11 } from './day11.js';
+// import { Day12 } from './day12.js';
+// import { Day13 } from './day13.js';
+// import { Day14 } from './day14.js';
+// import { Day15 } from './day15.js';
+// import { Day16 } from './day16.js';
+// import { Day17 } from './day17.js';
+// import { Day18 } from './day18.js';
+// import { Day19 } from './day19.js';
+// import { Day20 } from './day20.js';
+// import { Day21 } from './day21.js';
+// import { Day22 } from './day22.js';
+// import { Day23 } from './day23.js';
+// import { Day24 } from './day24.js';
+// import { Day25 } from './day25.js';
 
 export class DayFactory {
     public static Day(day: number): DayRunner {

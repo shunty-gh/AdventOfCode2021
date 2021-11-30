@@ -1,5 +1,5 @@
-import { fetchInput } from './common';
-import { DayFactory } from "./day-factory";
+import { fetchInput } from './common.js';
+import { DayFactory } from "./day-factory.js";
 
 const thisYear = 2021;
 
