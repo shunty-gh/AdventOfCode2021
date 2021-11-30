@@ -15,7 +15,7 @@
   "scripts": {
     "clean": "tsc --build --clean",
     "build": "tsc --build",
-    "start": "npm run build && node lib/main "
+    "start": "npm run build && node --experimental-specifier-resolution=node lib/main "
   },
   "keywords": [
     "aoc",
