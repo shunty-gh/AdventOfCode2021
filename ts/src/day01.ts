@@ -6,30 +6,33 @@ export class Day01 extends DayBase {
     }
 
     public async run(): Promise<void> {
-        const lines = await this.getInputInts();
-        //console.log(`Day ${this.day} lines`, lines);
+        const readings = await this.getInputInts();
+        //const readings = [ 199,200,208,210,200,207,240,269,260,263];
         let part1 = 0, part2 = 0;
 
-        const target = 2020;
-        const len = lines.length;
-        for (let i = 0; i < len; i++) {
-            for (let j = i + 1; j < len; j++) {
-                if (!part1) {
-                    if (lines[i] + lines[j] === target) {
-                        part1 = lines[i] * lines[j];
-                    }
-                }
-                if (!part2) {
-                    for (let k = j + 1; k < len; k++) {
-                        if (lines[i] + lines[j] + lines[k] === target) {
-                            part2 = lines[i] * lines[j] * lines[k];
-                            break;
-                        }
-                    }
-                }
+        for (let i = 1; i < readings.length; i++) {
+            if (readings[i] > readings[i-1]) {
+                part1++;
             }
-            if (part1 && part2) break;
         }
+
+        let winA = readings[0] + readings[1] + readings[2];
+        let winB = winA;
+        for (let i = 2; i < readings.length - 1; i++) {
+            winB = winB - readings[i-2] + readings[i+1];
+            if (winB > winA) {
+                part2++;
+            }
+            winA = winB;
+        }
+
+        // for (let i = 2; i < readings.length - 1; i++) {
+        //     let wa = readings[i-2] + readings[i-1] + readings[i];
+        //     let wb = readings[i-1] + readings[i] + readings[i+1];
+        //     if (wb > wa) {
+        //         part2++;
+        //     }
+        // }
 
         console.info(`Day ${this.day}`);
         console.info(`  Part 1:`, part1);
