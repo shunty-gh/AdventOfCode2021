@@ -17,8 +17,8 @@ function getDaysFromCommandLine(): number[] {
     // number if we're in range Dec 1..25 or 1 otherwise.
     if (result.length === 0) {
         const dt = new Date();
-        if (dt.getMonth() === 11 && dt.getDay() <= 25) { // getMonth is 0 based but getDay isn't, of course!
-            result.push(dt.getDay());
+        if (dt.getMonth() === 11 && dt.getDate() <= 25) { // getMonth is 0 based but getDate isn't, of course!
+            result.push(dt.getDate());
         } else {
             result.push(1);
         }
