@@ -5,6 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": ".NET Launch",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "cs: build",
+            "program": "${workspaceFolder}/cs/bin/x64/Debug/net6.0/aoc2021.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/cs",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+        {
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",

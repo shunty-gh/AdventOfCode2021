@@ -12,6 +12,28 @@
 				"isDefault": true,
 			},
 			"label": "tsc: build"
+		},
+		{
+			"type": "process",
+			"command": "dotnet",
+			"label": "cs: build",
+			"problemMatcher": "$msCompile",
+            "args": [
+                "build",
+                "${workspaceFolder}/cs/aoc2021.csproj",
+                // "/property:GenerateFullPaths=true",
+                // "/consoleloggerparameters:NoSummary"
+            ],
+		},
+		{
+			"type": "process",
+			"command": "dotnet",
+			"label": "cs: clean",
+			"problemMatcher": "$msCompile",
+            "args": [
+                "clean",
+                "${workspaceFolder}/cs/aoc2021.csproj",
+            ],
 		}
-	]
+]
 }
