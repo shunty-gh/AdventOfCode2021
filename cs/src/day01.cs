@@ -1,13 +1,10 @@
-public class Day01
+public class Day01 : DayBase
 {
-    private const int DayNumber = 1;
+    public Day01() : base(1) {}
 
-    public void Run()
+    public override void Run()
     {
-        var fname = Path.Combine("..", "input", $"day{DayNumber:D2}-input");
-        var readings = File.ReadAllLines(fname)
-            .Select(s => int.Parse(s))
-            .ToList();
+        var readings = LoadInts().ToList();
 
         /// The LINQ (and "not easily debuggable") way
         var part1 = readings
