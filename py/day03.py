@@ -1,13 +1,5 @@
 import os
 
-def binStrToInt(str: str) -> int:
-    slen = len(str)
-    result = 0
-    for idx in range(slen):
-        if str[idx] == '1':
-            result += 1 << slen - idx - 1
-    return result
-
 def filterLines(lines: list[str], idx: int, selectMost: bool) -> list[str]:
     if len(lines) == 1:
         return lines
@@ -61,4 +53,4 @@ leasts = filterInput(input, False)
 
 print("Day 3")
 print("  Part 1:", mostCommon * leastCommon)
-print("  Part 2:", binStrToInt(mosts) * binStrToInt(leasts))
+print("  Part 2:", int(mosts, 2) * int(leasts, 2))

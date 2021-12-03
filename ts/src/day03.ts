@@ -39,8 +39,8 @@ export class Day03 extends DayBase {
         while (lfilt.length > 1) {
             lfilt = this.filterValues(lfilt, idx++, false);
         }
-        const ogr = this.binaryStrToInt(mfilt[0]);
-        const csr = this.binaryStrToInt(lfilt[0]);
+        const ogr = parseInt(mfilt[0], 2);
+        const csr = parseInt(lfilt[0], 2);
 
         //console.log('mcb, mc, lc', mcb, mc, lc);
         //console.log('mfilt, lfilt', mfilt, lfilt);
@@ -48,18 +48,6 @@ export class Day03 extends DayBase {
         console.info(`  Part 1:`, lc * mc);
         console.info(`  Part 2:`, ogr * csr);
         console.info('');
-    }
-
-    private binaryStrToInt(input: string): number {
-        if (!input) { return 0; }
-        const slen = input.length;
-        let result = 0;
-        for (let i = 0; i < slen; i++) {
-            if (input[i] === '1') {
-                result += (1 << (slen - i - 1));
-            }
-        }
-        return result;
     }
 
     private filterValues(lines: string[], index: number, requireMostCommon: boolean): string[] {
