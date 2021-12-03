@@ -4,19 +4,11 @@ def filterLines(lines: list[str], idx: int, selectMost: bool) -> list[str]:
     if len(lines) == 1:
         return lines
 
-    ones = []
-    zeros = []
-    for line in lines:
-        if line[idx] == '1':
-            ones.append(line)
-        else:
-            zeros.append(line)
-
-    lone, lzero = len(ones), len(zeros)
-    if selectMost:
-        return ones if lone >= lzero else zeros
-    else:
-        return zeros if lone >= lzero else ones
+    zc = sum(line[idx] == '0' for line in lines)
+    mostch = '1' if len(lines) - zc >= zc else '0'
+    leastch = '0' if mostch == '1' else '1'
+    selectch = mostch if selectMost else leastch
+    return [line for line in lines if line[idx] == selectch]
 
 def filterInput(lines: list[str], selectMost: bool) -> str:
     filtered = lines.copy()
@@ -40,12 +32,9 @@ for line in input:
             counts[idx] += 1
 
 # Take the counts array, treat > half as '1' and < half as '0' and convert 'binary' string to int
-half, mostCommon, leastCommon = linecount / 2, 0, 0
-for idx in range(bitlen):
-    if counts[idx] > half:
-        mostCommon += 1 << bitlen - idx - 1
-    else:
-        leastCommon += 1 << bitlen - idx - 1
+half = linecount / 2
+mostCommon = int("".join(['1' if c > half else '0' for c in counts]), 2)
+leastCommon = int("".join(['0' if c > half else '1' for c in counts]), 2)
 
 # Part 2
 mosts = filterInput(input, True)
