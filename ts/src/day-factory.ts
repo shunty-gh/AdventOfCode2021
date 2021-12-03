@@ -1,7 +1,7 @@
 import { DayRunner } from './day-runner.js';
 import { Day01 } from './day01.js';
 import { Day02 } from './day02.js';
-// import { Day03 } from './day03.js';
+import { Day03 } from './day03.js';
 // import { Day04 } from './day04.js';
 // import { Day05 } from './day05.js';
 // import { Day06 } from './day06.js';
@@ -32,8 +32,8 @@ export class DayFactory {
                 return new Day01();
             case 2:
                 return new Day02();
-            // case 3:
-            //     return new Day03();
+            case 3:
+                return new Day03();
             // case 4:
             //     return new Day04();
             // case 5:
