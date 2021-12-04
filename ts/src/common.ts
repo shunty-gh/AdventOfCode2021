@@ -72,7 +72,7 @@ export function rotatePoint180(p: Point2D, o: Point2D = { x: 0, y: 0 }): Point2D
     };
 }
 
-export async function getInputLines(day?: number, test: boolean = false): Promise<string[]> {
+export async function getInputLines(day?: number, keepBlankLines: boolean = false, test: boolean = false): Promise<string[]> {
     try {
         const inputfile = test
             ? getInputFilename(day) + '-test'
@@ -87,10 +87,14 @@ export async function getInputLines(day?: number, test: boolean = false): Promis
                 }
             }) || "";
         //console.log("Input data", data);
-        return data
-            .replace(/\r\n/g,'\n') // normalize line endings
-            .split('\n')           // split on newline
-            .filter(v => v)        // remove blank lines
+        return keepBlankLines
+            ?  data
+                .replace(/\r\n/g,'\n') // normalize line endings
+                .split('\n')           // split on newline
+            : data
+                .replace(/\r\n/g,'\n') // normalize line endings
+                .split('\n')           // split on newline
+                .filter(v => v)        // remove blank lines
             ;
     } catch (err) {
         console.log("Error reading input file.", err);
@@ -99,7 +103,7 @@ export async function getInputLines(day?: number, test: boolean = false): Promis
 }
 
 export async function getInputFloats(day?: number, test: boolean = false): Promise<number[]> {
-    const lines = await getInputLines(day, test);
+    const lines = await getInputLines(day, false, test);
     let result: number[] = [];
     lines.forEach(v => {
         let n = parseFloat(v);
@@ -111,7 +115,7 @@ export async function getInputFloats(day?: number, test: boolean = false): Promi
 }
 
 export async function getInputInts(day?: number, test: boolean = false): Promise<number[]> {
-    const lines = await getInputLines(day, test);
+    const lines = await getInputLines(day, false, test);
     let result: number[] = [];
     lines.forEach(v => {
         let n = parseInt(v, 10);

@@ -18,6 +18,10 @@ export abstract class DayBase implements DayRunner {
         return await getInputLines(this.day);
     }
 
+    protected async getAllInputLines(): Promise<string[]> {
+        return await getInputLines(this.day, true);
+    }
+
     protected async getInputInts(): Promise<number[]> {
         return await getInputInts(this.day);
     }
