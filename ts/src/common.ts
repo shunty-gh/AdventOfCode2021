@@ -72,6 +72,30 @@ export function rotatePoint180(p: Point2D, o: Point2D = { x: 0, y: 0 }): Point2D
     };
 }
 
+export function lineToInts(line: string, separator: string = ','): number[] {
+    let result: number[] = [];
+    line.split(separator).forEach(v => {
+        let n = parseInt(v.trim(), 10);
+        if (!isNaN(n)) {
+            result.push(n);
+        }
+    });
+    return result;
+}
+
+export function linesToInts(lines: string[], separator: string = ','): number[] {
+    let result: number[] = [];
+    lines.forEach(line => {
+        line.split(separator).forEach(v => {
+            let n = parseInt(v.trim(), 10);
+            if (!isNaN(n)) {
+                result.push(n);
+            }
+        });
+    });
+    return result;
+}
+
 export async function getInputLines(day?: number, keepBlankLines: boolean = false, test: boolean = false): Promise<string[]> {
     try {
         const inputfile = test
