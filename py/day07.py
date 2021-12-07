@@ -13,7 +13,7 @@ with open(os.path.dirname(os.path.realpath(__file__)) + "/../input/day07-input",
     input = [int(i) for i in f.readline().strip().split(',')]
 
 part1, part2 = sys.maxsize, sys.maxsize
-for i in input:
+for i in range(min(input), max(input)):
     f1, f2 = totalFuel(input, i)
     if f1 < part1:
         part1 = f1
