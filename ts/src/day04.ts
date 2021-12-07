@@ -75,7 +75,7 @@ export class Day04 extends DayBase {
                        && nums[rc + 15].state
                        && nums[rc + 20].state)
                     ) {
-                        console.log("We have a winner", c);
+                        //console.log("We have a winner", c);
                         if (!firstWinner) {
                             firstWinner = c;
                             lastDrawWinner = lastDraw;
