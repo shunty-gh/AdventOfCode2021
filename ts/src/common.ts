@@ -152,7 +152,7 @@ export async function getInputInts(day?: number, test: boolean = false): Promise
 
 export function getInputFilename(day?: number): string {
     const dayno = (day && day.toString()) || process.argv[2] || '1';
-    const daynoZ = ('00' + dayno).slice(1);
+    const daynoZ = ('00' + dayno).slice(-2);
     return `../input/day${daynoZ}-input`;
 }
 
