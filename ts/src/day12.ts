@@ -1,4 +1,3 @@
-import { connect } from 'http2';
 import { DayBase } from './day-runner.js';
 
 interface Node {
@@ -12,19 +11,15 @@ export class Day12 extends DayBase {
         super(12);
     }
 
-    private newNode(nodeName: string): Node {
-        return { name: nodeName, connections: [], caps: nodeName[0] >= 'A' && nodeName[0] <= 'Z' };
-    }
-
     public async run(): Promise<void> {
         const lines = await this.getInputLines();
-        let part2 = 0;
+        const newNode = (nodeName: string): Node => ({ name: nodeName, connections: [], caps: nodeName[0] >= 'A' && nodeName[0] <= 'Z' });
 
         let nodes = new Map<string, Node>();
         lines.forEach(line => {
             const [left, right] = line.trim().split('-');
-            let ln = nodes.get(left) || this.newNode(left);
-            let rn = nodes.get(right) || this.newNode(right);
+            let ln = nodes.get(left) || newNode(left);
+            let rn = nodes.get(right) || newNode(right);
             ln.connections.push(rn);
             rn.connections.push(ln);
             if (!nodes.has(left)) {
@@ -60,7 +55,7 @@ export class Day12 extends DayBase {
                         q.push(newpath);
                     } // else can't go here
                 } else if (c.name === "end")  {
-                    finalPaths.push([...path].concat("end"));
+                    finalPaths.push([...path, "end"]);
                 } else {
                     q.push([...path, c.name]);
                 }
