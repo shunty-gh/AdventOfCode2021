@@ -7,7 +7,7 @@ import { Day05 } from './day05.js';
 import { Day06 } from './day06.js';
 import { Day07 } from './day07.js';
 import { Day08 } from './day08.js';
-//import { Day09 } from './day09.js';
+import { Day09 } from './day09.js';
 import { Day10 } from './day10.js';
 import { Day11 } from './day11.js';
 import { Day12 } from './day12.js';
@@ -44,8 +44,8 @@ export class DayFactory {
                 return new Day07();
             case 8:
                 return new Day08();
-            //case 9:
-            //    return new Day09();
+            case 9:
+               return new Day09();
             case 10:
                 return new Day10();
             case 11:
