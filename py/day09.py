@@ -1,3 +1,4 @@
+from __future__ import annotations
 import os
 
 # https://adventofcode.com/2021/day/9
@@ -43,7 +44,7 @@ def getBasinSize(map: list[str], x: int, y: int) -> int:
 
 with open(os.path.dirname(os.path.realpath(__file__)) + "/../input/day09-input", "r") as f:
     input = [line.strip() for line in f.readlines()]
-# input = ['2199943210', '3987894921', '9856789892', '8767896789', '9899965678'] # expect P1: 15; P2: 1134
+    # input = ['2199943210', '3987894921', '9856789892', '8767896789', '9899965678'] # expect P1: 15; P2: 1134
 
 part1 = 0
 basins = []
