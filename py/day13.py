@@ -15,15 +15,11 @@ def fold(dots, fold):
     return result
 
 def draw(dots):
-    xsort = sorted(dots, key = lambda k: k[0])
-    minx = xsort[0][0]
-    maxx = xsort[-1][0]
-    ysort = sorted(dots, key = lambda k: k[1])
-    miny = ysort[0][1]
-    maxy = ysort[-1][1]
-    for y in range(miny, maxy + 1):
+    maxx = max([x for x,_ in dots.keys()])
+    maxy = max([y for _,y in dots.keys()])
+    for y in range(maxy + 1):
         line = ''
-        for x in range(minx, maxx + 1):
+        for x in range(maxx + 1):
             line += '#' if (x,y) in dots else ' '
         print('    ' + line)
 
@@ -37,8 +33,8 @@ with open(os.path.dirname(os.path.realpath(__file__)) + "/../input/day13-input",
             v = int(f[1])
             folds.append([v, 0] if f[0] == 'x' else [0, v])
         elif line:
-            dot = (int(line.split(',')[0]), int(line.split(',')[1]))
-            dots[dot] = True
+            x,y = [int(v) for v in line.split(',')]
+            dots[(x,y)] = True
 
 print("Day 13")
 print("  Part 1", len(fold(dots, folds[0])))
@@ -49,4 +45,3 @@ for f in folds:
 
 print("  Part 2")
 draw(part2)
-
