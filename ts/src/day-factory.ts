@@ -12,7 +12,7 @@ import { Day10 } from './day10.js';
 import { Day11 } from './day11.js';
 import { Day12 } from './day12.js';
 import { Day13 } from './day13.js';
-// import { Day14 } from './day14.js';
+import { Day14 } from './day14.js';
 // import { Day15 } from './day15.js';
 // import { Day16 } from './day16.js';
 // import { Day17 } from './day17.js';
@@ -45,7 +45,7 @@ export class DayFactory {
             case 8:
                 return new Day08();
             case 9:
-               return new Day09();
+                return new Day09();
             case 10:
                 return new Day10();
             case 11:
@@ -54,8 +54,8 @@ export class DayFactory {
                 return new Day12();
             case 13:
                 return new Day13();
-            // case 14:
-            //     return new Day14();
+            case 14:
+                return new Day14();
             // case 15:
             //     return new Day15();
             // case 16:
