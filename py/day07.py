@@ -1,3 +1,4 @@
+from __future__ import annotations
 import sys
 import os
 
@@ -10,10 +11,10 @@ def totalFuel(posList: list[int], pos: int) -> tuple[int, int]:
     return f1, f2
 
 with open(os.path.dirname(os.path.realpath(__file__)) + "/../input/day07-input", "r") as f:
-    input = [int(i) for i in f.readline().strip().split(',')]
+    input = sorted([int(i) for i in f.readline().strip().split(',')])
 
 part1, part2 = sys.maxsize, sys.maxsize
-for i in range(min(input), max(input)):
+for i in range(input[0], input[-1]):
     f1, f2 = totalFuel(input, i)
     if f1 < part1:
         part1 = f1
