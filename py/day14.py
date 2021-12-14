@@ -1,38 +1,34 @@
 from __future__ import annotations
 import os
-from collections import defaultdict
+from collections import Counter
 
 # https://adventofcode.com/2021/day/14
 # See the ../cs/src/day14.cs version for a bit of explanation
 
 def insert(start: str, inserts: dict[str,str], steps: int) -> int:
     # get pairs from start text
-    pairs: defaultdict[str,int] = defaultdict(lambda: 0)
-    for i,_ in enumerate(start[0:-1]):
-        key = start[i:i+2]
-        pairs[key] = pairs[key] + 1
+    pairs = Counter()
+    for i in range(len(start) - 1):
+        pairs[start[i:i+2]] += 1
 
+    # insert a char and transform each pair into two new pairs and increment their count
     for i in range(steps):
-        pairs2: defaultdict[str,int] = defaultdict(lambda: 0)
+        pairs2 = Counter()
         for k,v in pairs.items():
             toInsert = inserts[k]
-            k1 = k[0] + toInsert
-            k2 = toInsert + k[1]
-            pairs2[k1] = pairs2[k1] + v
-            pairs2[k2] = pairs2[k2] + v
+            pairs2[k[0] + toInsert] += v
+            pairs2[toInsert + k[1]] += v
         pairs = pairs2
 
-    # group and sum individual characters
-    chars = defaultdict(lambda: 0)
-    chars[start[0]] = 1
+    # group and sum individual characters. Only take the first ch of each pair
+    # but then add +1 for the final character of the start string too (as it will always
+    # be the last character of any output string and hence never the first ch of a pair)
+    chars = Counter()
     chars[start[-1]] = 1
-    for k,v in pairs.items():
-        chars[k[0]] += v
-        chars[k[1]] += v
+    for k in pairs:
+        chars[k[0]] += pairs[k]
 
-    cmax = max([v for v in chars.values()]) // 2
-    cmin = min([v for v in chars.values()]) // 2
-    return cmax - cmin
+    return (max(chars.values()) - min(chars.values()))
 
 ## main
 with open(os.path.dirname(os.path.realpath(__file__)) + "/../input/day14-input", "r") as f:
@@ -40,10 +36,9 @@ with open(os.path.dirname(os.path.realpath(__file__)) + "/../input/day14-input",
 
 start = lines[0].strip()
 inserts = {}
-for line in [line.strip() for line in lines]:
-    if line and ' -> ' in line:
-        src, dest = line.split(' -> ')
-        inserts[src] = dest
+for line in [line.strip() for line in lines if ' -> ' in line]:
+    src, dest = line.split(' -> ')
+    inserts[src] = dest
 
 print("Day 14")
 print("  Part 1", insert(start, inserts, 10))
