@@ -1,6 +1,8 @@
 import os
 from functools import reduce
 
+# https://adventofcode.com/2021/day/16
+
 def binArrayToInt(bin):
     return sum([1 << i if b == 1 else 0 for i,b in enumerate(bin[::-1])])
 
