@@ -36,11 +36,14 @@ export class Day16 extends DayBase {
     }
 
     private versionSum(packet: Packet): number {
-        let result = packet.version;
-        for (let sub of packet.packets) {
-            result += this.versionSum(sub);
-        }
-        return result;
+        return packet.packets.reduce<number>((pv, cv) => {
+            return pv + this.versionSum(cv);
+        }, packet.version);
+        // let result = packet.version;
+        // for (let sub of packet.packets) {
+        //     result += this.versionSum(sub);
+        // }
+        // return result;
     }
 
     private packetValue(packet: Packet): number {
