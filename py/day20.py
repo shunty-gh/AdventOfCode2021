@@ -13,7 +13,7 @@ def enhance(grid, rounds, iea, xMin, xMax, yMin, yMax):
     """
 
     map = grid.copy()
-    for round in range(1,rounds+1):
+    for round in range(rounds):
         mapnext = {}
         for y in range(yMin - 2, yMax + 2):
             for x in range(xMin - 2, xMax + 2):
@@ -21,7 +21,7 @@ def enhance(grid, rounds, iea, xMin, xMax, yMin, yMax):
                 for [dx,dy] in neighbours:
                     xx, yy = x+dx, y+dy
                     if xx < xMin or xx >= xMax or yy < yMin or yy >= yMax: # outside the currently mapped universe
-                        numstr += iea[-1] if round % 2 == 1 else iea[0]
+                        numstr += iea[-1] if round % 2 == 0 else iea[0]
                     else:
                         numstr += map[(xx,yy)]
 
