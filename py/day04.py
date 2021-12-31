@@ -47,6 +47,6 @@ boards.append(board) # don't forget the last one
 
 part1, part2 = play(draws, boards)
 
-print("Day 19")
+print("Day 4")
 print("  Part 1:", part1)
 print("  Part 2:", part2)
