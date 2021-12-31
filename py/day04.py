@@ -41,10 +41,9 @@ for line in input[2:]:
     if line == '':
         boards.append(board)
         board = { 'w': False, 'n': [] }
-        nums = []
         continue
     board['n'].extend([[int(x), False] for x in line.replace('  ', ' ').split(' ')])
-boards.append(board)
+boards.append(board) # don't forget the last one
 
 part1, part2 = play(draws, boards)
 
