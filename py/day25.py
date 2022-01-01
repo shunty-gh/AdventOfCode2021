@@ -59,11 +59,12 @@ def run(map, mx, my):
         m = m2
 
         if not moved:
-            print('no movement after', steps)
+            #print('no movement after', steps)
+            return steps
             break
 
-        if steps % 100 == 0:
-            print(steps, 'steps')
+        # if steps % 100 == 0:
+        #     print(steps, 'steps')
 
 with open(os.path.dirname(os.path.realpath(__file__)) + "/../input/day25-input", "r") as f:
     input = [line.strip() for line in f.readlines()]
@@ -87,9 +88,6 @@ for y,line in enumerate(input):
     for x,ch in enumerate(line):
         map[(x,y)] = ch
 
-#print(map,xmax,ymax)
-run(map,xmax,ymax)
-
 print("Day 25")
-print("  Part 1:", 0)
-print("  Part 2:", 0)
+print("  Part 1:", run(map,xmax,ymax))
+#print("  Part 2:", 0)
