@@ -5,8 +5,11 @@ ts/lib/
 
 *.exe
 *.pdb
+*.ilk
 *.obj
 a.out
+cpp/aoc2021
+cpp/aoc2021-*
 
 .vs/
 .vscode/tags

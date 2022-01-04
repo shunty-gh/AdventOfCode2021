@@ -1,0 +1,26 @@
+# Makefile for x64 Windows using MSVC cl.exe and Nmake
+# $> nmake -f Makefile.msvc
+
+DEBUG_FLAGS = /Zi /W3 /Od /JMC /nologo /Gs /Gy /DEBUG:FASTLINK /MP
+PERF_FLAGS = /O2 /MP /nologo
+
+CC = cl
+CXXFLAGS = -std:c++20 /EHsc
+
+TARGET = aoc2021-cl.exe
+OBJ_DIR = ./obj
+DEPS = src/*.h
+SRC = src/*.cpp
+
+$(TARGET): $(SRC) $(DEPS)
+	$(CC) $(CXXFLAGS) $(DEBUG_FLAGS) /Fo: $(OBJ_DIR)/ /Fe: $(TARGET) $(SRC)
+
+.PHONY: clean
+
+all:  $(TARGET)
+
+release:
+	$(CC) $(CXXFLAGS) $(PERF_FLAGS) /Fo: $(OBJ_DIR)/ /Fe: $(TARGET) $(SRC)
+
+clean:
+	-$(RM) -f $(OBJ_DIR)/*.obj *.obj *.exe *.ilk *.pdb

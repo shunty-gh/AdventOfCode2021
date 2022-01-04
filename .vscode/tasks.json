@@ -32,6 +32,26 @@
                 "clean",
                 "${workspaceFolder}/cs/aoc2021.csproj",
             ],
+		},
+		{
+			"type": "cppbuild",
+			"label": "C++ build",
+			"command": "clang++.exe",
+			"args": [
+				"-std=c++20",
+				"-Wall",
+				"-Wextra",
+				"-g",
+				"-o", "aoc2021.exe",
+				"src/*.cpp"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/cpp"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build"
 		}
 	]
 }
