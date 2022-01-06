@@ -1,0 +1,16 @@
+# Crosss compile from WSL/Linux to Windows 64 bit with MinGW / g++
+# $> cmake -DCMAKE_TOOLCHAIN_FILE=./cross-compile-linux-win64.cmake .
+# $> cmake --build .
+
+set(CMAKE_SYSTEM_NAME Windows)
+set(CMAKE_SYSTEM_VERSION 1)
+set(TOOLCHAIN_PREFIX x86_64-w64-mingw32)
+
+set(CMAKE_C_COMPILER    "${TOOLCHAIN_PREFIX}-gcc")
+set(CMAKE_CXX_COMPILER  "${TOOLCHAIN_PREFIX}-g++")
+set(CMAKE_CXX_FLAGS "-static")
+
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+set(CMAKE_CROSS_COMPILING TRUE)

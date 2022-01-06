@@ -1,13 +1,20 @@
-# Simple clang++ makefile for Linux based machines
+# Simple clang++ makefile
 # $> make -f Makefile.clang
 
-DEBUG_FLAGS = -O0 -g
+DEBUG_FLAGS = -g -Wall -Wextra
 PERF_FLAGS = -O3
 
 CC = clang++
-CXXFLAGS = -std=c++20
+CXXFLAGS = -std=c++2a
 
-TARGET = aoc2021-clang
+ifeq ($(OS), Windows_NT)
+    this_OS := Win
+    TARGET = aoc2021-clang.exe
+else
+    this_OS := $(shell sh -c 'uname 2>/dev/null || echo Unknown')
+    TARGET = aoc2021-clang
+endif
+
 OBJ_DIR = ./obj
 DEPS = src/*.h
 SRC = src/*.cpp

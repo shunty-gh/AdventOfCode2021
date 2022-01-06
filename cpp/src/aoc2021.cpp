@@ -24,7 +24,7 @@ int main() {
 
     // Day params
     // ToDo : Parse command line args and get day numbers. Maybe with https://github.com/CLIUtils/CLI11
-    vector<int> daysToInclude{ 1,2,3 };
+    vector<int> daysToInclude{ 1,2,3,4 };
 
     for (size_t di = 0; di < daysToInclude.size(); di++) {
         int day = daysToInclude[di];
@@ -55,7 +55,6 @@ int main() {
 }
 
 // Days to do...
-void day04() { }
 void day05() { }
 void day06() { }
 void day07() { }

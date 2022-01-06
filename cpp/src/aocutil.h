@@ -45,6 +45,8 @@ std::vector<int> get_input_ints(int, bool);
 void printDayResult(int, int, int);
 void printDayResult(int, int, std::string);
 void printDayResults(int, int, int);
+std::vector<std::string> split(const std::string &s, char delim);
+std::vector<int> split_ints(const std::string &s, char delim);
 
 // ANSI Colours
 // Colours on https://ss64.com/nt/syntax-ansi.html

@@ -13,13 +13,14 @@
             "cwd": "${workspaceFolder}/cpp",
             "environment": [],
             "externalConsole": false,
-            "preLaunchTask": "C++ build",
             "linux": {
+                "preLaunchTask": "C++ build (Linux)",
                 "program": "${workspaceFolder}/cpp/aoc2021",
                 "MIMode": "gdb",
                 "miDebuggerPath": "/usr/bin/gdb",
             },
             "windows": {
+                "preLaunchTask": "C++ build (Win)",
                 "program": "${workspaceFolder}/cpp/aoc2021.exe",
                 "MIMode": "gdb",
                 "miDebuggerPath": "gdb.exe",

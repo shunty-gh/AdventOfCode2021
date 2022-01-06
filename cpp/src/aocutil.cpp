@@ -1,8 +1,11 @@
 #include <algorithm>
 #include <fstream>
 #include <functional>
+#include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
+
 #include "aocutil.h"
 
 /** Read input file for day number and apply a lambda to each line */
@@ -46,4 +49,27 @@ void printDayResults(int dayNumber, int part1, int part2) {
     std::cout << BLUE << "Day " << dayNumber << " " << RESET << "\n";
     std::cout << "  Part 1: " << YELLOW << part1 << RESET << "\n";
     std::cout << "  Part 2: " << YELLOW << part2 << RESET << "\n";
+}
+
+
+std::vector<std::string> split(const std::string &s, char delim) {
+    std::vector<std::string> result;
+    std::stringstream ss(s);
+    std::string item;
+
+    while (getline(ss, item, delim)) {
+        result.push_back (item);
+    }
+    return result;
+}
+
+std::vector<int> split_ints(const std::string &s, char delim) {
+    std::vector<int> result;
+    std::stringstream ss (s);
+    std::string item;
+
+    while (getline(ss, item, delim)) {
+        result.push_back(std::stoi(item));
+    }
+    return result;
 }

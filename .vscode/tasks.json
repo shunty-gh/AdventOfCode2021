@@ -35,14 +35,34 @@
 		},
 		{
 			"type": "cppbuild",
-			"label": "C++ build",
+			"label": "C++ build (Win)",
 			"command": "clang++.exe",
 			"args": [
-				"-std=c++20",
+				"-std=c++2a",
 				"-Wall",
 				"-Wextra",
 				"-g",
 				"-o", "aoc2021.exe",
+				"src/*.cpp"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/cpp"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build"
+		},
+		{
+			"type": "cppbuild",
+			"label": "C++ build (Linux)",
+			"command": "clang++",
+			"args": [
+				"-std=c++2a",
+				"-Wall",
+				"-Wextra",
+				"-g",
+				"-o", "aoc2021",
 				"src/*.cpp"
 			],
 			"options": {
