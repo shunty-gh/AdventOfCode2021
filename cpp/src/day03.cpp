@@ -3,9 +3,8 @@
 
 using namespace std;
 
-vector<int> countOnes(vector<string> src) {
+vector<int> countOnes(const vector<string> &src) {
     int bitwidth = src[0].size();
-    int numcount = src.size();
     vector<int> result(bitwidth, 0);
     for (auto &&num : src) {
         for (int i = 0; i < bitwidth; i++) {
@@ -17,29 +16,21 @@ vector<int> countOnes(vector<string> src) {
     return result;
 }
 
-int countAt(vector<string> src, int bitPos) {
+int countAt(const vector<string> &src, int bitPos) {
     int result = 0;
     for (auto &&num : src) {
         if (num[bitPos] == '1') {
-            result += 1;
+            result++;
         }
     }
     return result;
 }
 
-vector<string> filterByBit(vector<string> src, int bitPos, bool requireLargest) {
+vector<string> filterByBit(const vector<string> &src, int bitPos, bool requireLargest) {
     int ones = countAt(src, bitPos);
     int zeros = src.size() - ones;
 
-    char seek = '0';
-    if (ones == zeros && requireLargest) {
-        seek = '1';
-    } else {
-        char mostch = ones > zeros ? '1' : '0';
-        char leastch = ones < zeros ? '1' : '0';
-        seek = requireLargest ? mostch : leastch;
-    }
-
+    char seek = (requireLargest && ones >= zeros) || (!requireLargest && ones < zeros) ? '1' : '0';
     vector<string> result{};
     for (auto &&num : src) {
         if (num[bitPos] == seek) {
@@ -49,7 +40,7 @@ vector<string> filterByBit(vector<string> src, int bitPos, bool requireLargest) 
     return result;
 }
 
-string filterValues(vector<string> src, bool requireLargest) {
+string filterValues(const vector<string> &src, bool requireLargest) {
     int bp = 0;
     auto filt = src;
     while (filt.size() > 1) {
@@ -62,23 +53,23 @@ string filterValues(vector<string> src, bool requireLargest) {
 void day03()
 {
     auto lines = get_input_lines(3, false);
+    // Part 1
     auto counts = countOnes(lines);
-
     int half = lines.size() / 2;
     int gr = 0, er = 0;
-    for (int i = 0; i < counts.size(); i++) {
+    for (int i = 0; i < (int)counts.size(); i++) {
+        gr *= 2;
+        er *= 2;
         if (counts[i] >= half) {
-            gr = (gr << 1) + 1;
-            er = (er << 1);
+            gr++;
         } else {
-            gr = (gr << 1);
-            er = (er << 1) + 1;
+            er++;
         }
     }
 
     // Part 2
-    auto ogr = stoi(filterValues(lines, true).c_str(), nullptr, 2);
-    auto csr = stoi(filterValues(lines, false).c_str(), nullptr, 2);
+    int ogr = stoi(filterValues(lines, true).c_str(), nullptr, 2);
+    int csr = stoi(filterValues(lines, false).c_str(), nullptr, 2);
 
-	printDayResults(2, gr * er, ogr * csr);
+	printDayResults(3, gr * er, ogr * csr);
 }
