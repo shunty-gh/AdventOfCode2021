@@ -4,8 +4,11 @@
 #include <array>
 #include <iostream>
 #include <functional>
+#include <map>
+#include <regex>
 #include <sstream>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 struct aoc_t {
@@ -43,10 +46,13 @@ void get_input_lines(int, bool, const std::function<void(std::string)>&);
 std::vector<std::string> get_input_lines(int, bool);
 std::vector<int> get_input_ints(int, bool);
 void printDayResult(int, int, int);
-void printDayResult(int, int, std::string);
-void printDayResults(int, int, int);
-std::vector<std::string> split(const std::string &s, char delim);
-std::vector<int> split_ints(const std::string &s, char delim);
+void printDayResult(int, int, const std::string&);
+template <typename T> void printDayResults(int dayNumber, T, T);
+
+std::vector<std::string> split(const std::string&, char);
+std::vector<std::string> split(const std::string&, const std::string&);
+std::vector<std::string> split_r(const std::string str, const std::string&);
+std::vector<int> split_ints(const std::string&, char);
 
 // ANSI Colours
 // Colours on https://ss64.com/nt/syntax-ansi.html
@@ -110,5 +116,11 @@ std::vector<int> split_ints(const std::string &s, char delim);
 #define COLOR_D      BRIGHT_MAGENTA
 #define COLOR_E      BRIGHT_YELLOW
 #define COLOR_F      BRIGHT_WHITE
+
+template <typename T> void printDayResults(int dayNumber, T part1, T part2) {
+    std::cout << BLUE << "Day " << dayNumber << " " << RESET << "\n";
+    std::cout << "  Part 1: " << YELLOW << part1 << RESET << "\n";
+    std::cout << "  Part 2: " << YELLOW << part2 << RESET << "\n";
+}
 
 #endif

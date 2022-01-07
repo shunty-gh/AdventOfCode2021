@@ -2,6 +2,7 @@
 #include <fstream>
 #include <functional>
 #include <iostream>
+#include <regex>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -45,22 +46,39 @@ void printDayResult(int dayNumber, int part, std::string result) {
     std::cout << BLUE << "Day " << dayNumber << RESET << ", " " part " << part << ": " << YELLOW << result << RESET << "\n";
 }
 
-void printDayResults(int dayNumber, int part1, int part2) {
-    std::cout << BLUE << "Day " << dayNumber << " " << RESET << "\n";
-    std::cout << "  Part 1: " << YELLOW << part1 << RESET << "\n";
-    std::cout << "  Part 2: " << YELLOW << part2 << RESET << "\n";
+std::vector<std::string> split(const std::string &src, const std::string &delim) {
+    std::vector<std::string> result;
+    size_t start = 0, end = 0, dlen = delim.length();
+    std::string token;
+
+    while ((end = src.find(delim, start)) != std::string::npos) {
+        token = src.substr(start, end - start);
+        start = end + dlen;
+        result.push_back(token);
+    }
+    // ...and the last one
+    result.push_back(src.substr(start));
+    return result;
 }
 
-
-std::vector<std::string> split(const std::string &s, char delim) {
+std::vector<std::string> split(const std::string &src, char delim) {
     std::vector<std::string> result;
-    std::stringstream ss(s);
+    std::stringstream ss(src);
     std::string item;
 
     while (getline(ss, item, delim)) {
         result.push_back (item);
     }
     return result;
+}
+
+// Borrowed from https://stackoverflow.com/a/64886763
+std::vector<std::string> split_r(const std::string str, const std::string regex_str) {
+    std::regex regexz(regex_str);
+    std::vector<std::string> list(
+        std::sregex_token_iterator(str.begin(), str.end(), regexz, -1),
+        std::sregex_token_iterator());
+    return list;
 }
 
 std::vector<int> split_ints(const std::string &s, char delim) {

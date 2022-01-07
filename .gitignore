@@ -10,7 +10,7 @@ ts/lib/
 a.out
 cpp/aoc2021
 cpp/aoc2021-*
-cpp/build
+cpp/build*/
 
 .vs/
 .vscode/tags
