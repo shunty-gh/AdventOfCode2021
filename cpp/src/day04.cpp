@@ -43,22 +43,20 @@ void day04() {
 	auto input = get_input_lines(4, false);
 	auto draws = split_ints(input[0], ',');
 
-	int num_boards = (input.size() - 1) / 6;  // 5 lines per board plus one blank line, skip the first line
-	int lsz = input[2].size();
 	// Build the bingo boards
+	int isz = input.size(), lsz = input[2].size();
 	vector<Board> boards{};
-	for (int i = 0; i < num_boards; i++) {
+	for (int i = 2; i < isz; i += 6) { // i is start of each board
 		vector<Cell> cells{};
-		int boardstart = (i * 6) + 2;
 		for (int bi = 0; bi < 5; bi++) {
-			auto line = input[boardstart+bi];
-			for (int p = 0; p < lsz; p += 3) {
+			auto line = input[i+bi];
+			for (int p = 0; p < lsz; p += 3) { // p is start of each board element (may be a space character)
 				//int n = 10 * (line[p] != ' ' ? line[p] - '0' : 0) + (line[p+1] != ' ' ? line[p+1] - '0' : 0);
 				int n = 10 * (line[p] & 15) + (line[p+1] & 15); // much neater
 				cells.push_back({n, false});
 			}
 		}
-		boards.push_back(Board{ cells, false});
+		boards.push_back(Board{cells, false});
 	}
 
 	// Play the game
@@ -68,9 +66,9 @@ void day04() {
 			if (board.won) {
 				continue;
 			}
-			for (auto &&el : board.cells) {
-				if (el.value == draw) {
-					el.seen = true;
+			for (auto &&cell : board.cells) {
+				if (cell.value == draw) {
+					cell.seen = true;
 					if (has_won(board)) {
 						board.won = true;
 						if (first == 0) {
