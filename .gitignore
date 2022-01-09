@@ -11,6 +11,7 @@ a.out
 cpp/aoc2021
 cpp/aoc2021-*
 cpp/build*/
+cpp/out/
 
 .vs/
 .vscode/tags
