@@ -6,7 +6,6 @@ pub fn run() {
 
     let (mut part1, mut part2) = (0, 0);
 
-    // Using array indexing
     for i in 0..v.len() - 1 {
         // Part 1
         if v[i+1] > v[i] {
