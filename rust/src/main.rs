@@ -3,7 +3,7 @@ use solutions::*;
 
 fn main() {
     println!();
-    println!("*** Advent of Code 2021 ***");
+    println!("*** Advent of Code 2021 in Rust ***");
     println!();
 
     day01::run();
