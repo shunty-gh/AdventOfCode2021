@@ -3,8 +3,11 @@
 Some code to help find solutions to the [AdventOfCode 2021](https://adventofcode.com/2021).
 
 Currently:
+* Python solutions. [README](./py/README.md) for details.
 * TypeScript solutions - see the [README](./ts/README.md) for details.
-* Python - maybe. See how we get on. [README](./py/README.md) for details.
+* A few C# solutions
+* A few C++ solutions
+* Some Rust solutions
 
 All code will, hopefully, run cross platform - Windows, Linux, Windows subsystem for Linux (WSL2) and likely Mac but not tested.
 
