@@ -1,4 +1,4 @@
-use super::common::*;
+use crate::common::*;
 use regex::Regex;
 
 pub fn run() {
@@ -31,5 +31,5 @@ pub fn run() {
         }
     }
 
-    print_day_results(day, x1 * y1, x2 * y2);
+    print_day_results(&day, &(x1 * y1), &(x2 * y2));
 }

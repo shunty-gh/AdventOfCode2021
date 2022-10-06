@@ -1,4 +1,4 @@
-use super::common::*;
+use crate::common::*;
 
 pub fn run() {
     let day = 1;
@@ -17,5 +17,5 @@ pub fn run() {
         }
     }
 
-    print_day_results(day, part1, part2);
+    print_day_results(&day, &part1, &part2);
 }

@@ -87,7 +87,7 @@ pub fn get_input_strs(day: &i32) -> Option<Vec<String>> {
 //     println!("  Part {}: {}", part_no, result);
 // }
 
-pub fn print_day_results<T: Display>(day: i32, part1: T, part2: T) {
+pub fn print_day_results<T: Display>(day: &i32, part1: &T, part2: &T) {
     println!("Day {}", day);
     println!("  Part 1: {}", part1);
     println!("  Part 2: {}", part2);

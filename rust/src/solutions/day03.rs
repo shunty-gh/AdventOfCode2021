@@ -1,4 +1,4 @@
-use super::common::*;
+use crate::common::*;
 
 pub fn run() {
     let day = 3;
@@ -7,7 +7,7 @@ pub fn run() {
     let part1 = do_part1(&lines);
     let part2 = do_part2(&lines);
 
-    print_day_results(day, part1, part2);
+    print_day_results(&day, &part1, &part2);
 }
 
 fn do_part1(lines: &[String]) -> i64 {

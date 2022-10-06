@@ -1,4 +1,6 @@
 mod solutions;
+mod common;
+
 use solutions::*;
 
 fn main() {
